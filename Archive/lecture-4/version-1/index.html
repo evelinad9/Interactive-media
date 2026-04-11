@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.7.0/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene stats>
+      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+
+      <a-assets>
+        <a-asset-item id="shark.gltf" src="assets/shark.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-gltf-model
+        src="#shark.gltf"
+        position="0 0 -5"
+        scale="0.5 0.5 0.5"
+      ></a-gltf-model>
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-sky color="#051469"></a-sky>
+      <a-sphere
+        position="0 5 -25"
+        id="sun"
+        radius="5"
+        color="#f7e220"
+        animation="property: rotation; to 0 360 0; loop: true"
+      >
+        <a-entity
+          id="mars-orbit-pivot"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 15000; easing: linear"
+        >
+          <a-sphere
+            position="50 0 5"
+            radius="1.2"
+            color="grey"
+            animation="dur: 30000; easing: linear; loop: true; property: rotation; to: 360 0 0"
+            ><a-torus
+              id="saturn"
+              material="color: light grey"
+              geometry="radiusTubular: 0.05"
+              rotation="73.90181528935898 -79.55920055848073 -95.80541883941521"
+              scale="2 2 2"
+            ></a-torus>
+          </a-sphere>
+
+          <a-sphere
+            id="mars"
+            position="30 0 0"
+            radius="2"
+            color="#FF4500"
+            animation="dur: 10000; easing: linear; loop: true; property: rotation; to: 360 360 0"
+            material="emissive: #3e0f0f; emissiveIntensity: -2.93"
+          ></a-sphere>
+        </a-entity>
+
+        <a-entity
+          id="jupiter-orbit-pivot"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear"
+        >
+          <a-sphere
+            id="jupiter"
+            position="45 0 0"
+            radius="6"
+            color="orange"
+            animation="property: rotation; to: 360 360 0; loop: true; dur: 10000; easing: linear"
+          ></a-sphere>
+        </a-entity>
+
+        <a-entity
+          id="earth-orbit-pivot"
+          animation="property: rotation; to: 360 360 0; loop: true; dur: 20000; easing: linear"
+        >
+          <a-sphere
+            id="earth"
+            position="15 0 0"
+            radius="2"
+            color="#76c6f5"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear"
+          >
+            <a-sphere
+              id="moon"
+              position="3.5 0 0"
+              radius="1"
+              color="white"
+              animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
+            >
+            </a-sphere>
+          </a-sphere>
+        </a-entity>
+
+        <a-entity
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear"
+        >
+        </a-entity>
+      </a-sphere>
+    </a-scene>
+  </body>
+</html>

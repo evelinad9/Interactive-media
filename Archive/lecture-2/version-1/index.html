@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-sphere
+        radius="2"
+        material="color: #fec700; emissive: #fec700; emissiveIntensity: 1.84"
+        position="0 -5 -10"
+        scale="0.5 0.5 0.5"
+        animation="property: position; to: 0 10 -10 dir: alternate; dur: 4000; easing: easeOutQuad"
+      ></a-sphere>
+      <a-plane height="10" width="10" material="side: double" color="green" rotation="90 0 0" position="0 0 -12.27834" scale="3.40594 3.20323 3"></a-plane>      <a-cone radiustop:="" 0.1="" position="2.179 1.72013 -6.06192" scale="2.93936 3.49116 2.09678" material="color: #7c2a00"></a-cone>
+      <a-cone radiustop:="" 0.1="" position="-1.87496 1.72013 -6.80614" scale="4.33811 5.53844 3.92042" material="color: #ad3e00"></a-cone>
+      <a-sky color="#131636"  animation="property: components.material.material.color; type: color; to: #b6bafc; dur: 4000" ></a-sky>
+      <a-scene> </a-scene>
+    </a-scene>
+  </body>
+</html>
