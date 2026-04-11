@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-entity
+        environment="preset: egypt; groundColor: #445; grid: cross"
+      ></a-entity>
+
+      <a-entity environment></a-entity>
+    </a-scene>
+    <a-scene>
+      <!-- Assets are defined once here -->
+      <a-assets>
+        <img id="moss-texture" src="path/to/moss.jpg" />
+        <video
+          id="waterfall-vid"
+          src="path/to/water.mp4"
+          autoplay
+          loop="true"
+          crossorigin="anonymous"
+        ></video>
+      </a-assets>
+
+      <!-- Reusing the same asset on different shapes -->
+      <a-sphere src="#moss-texture" position="-2 1 -5"></a-sphere>
+      <a-box src="#moss-texture" position="2 1 -5"></a-box>
+
+      <!-- Displaying a video as a flat screen -->
+      <a-video
+        src="#waterfall-vid"
+        width="16"
+        height="9"
+        position="0 5 -10"
+      ></a-video>
+    </a-scene>
+  </body>
+</html>
