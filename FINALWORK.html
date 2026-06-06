@@ -1,0 +1,635 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.7.0/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-blink-controls/dist/aframe-blink-controls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-cursor-teleport@1.6.0/dist/aframe-cursor-teleport-component.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene cursor="rayOrigin: mouse" raycaster="objects: .clickable">
+      <!-- Camera Rig -->
+      <a-entity
+        id="cameraRig"
+        cursor-teleport="cameraRig: #cameraRig; cameraHead: #head; collisionEntities: .collision; ignoreEntities: .clickable"
+      >
+        <a-entity
+          id="head"
+          position="0 1.6 0"
+          camera
+          look-controls="reverseMouseDrag: true"
+        ></a-entity>
+
+        <!-- VR Hand Controls -->
+        <a-entity
+          laser-controls="hand: left"
+          raycaster="objects: .clickable; far: 100"
+          line="color: red; opacity: 0.75"
+          blink-controls="cameraRig: #cameraRig; teleportOrigin: #head; collisionEntities:.collision"
+        ></a-entity>
+        <a-entity
+          laser-controls="hand: right"
+          raycaster="objects: .clickable"
+          line="color: red; opacity: 0.75"
+          blink-controls="cameraRig: #cameraRig; teleportOrigin: #head; collisionEntities:.collision"
+        ></a-entity>
+      </a-entity>
+
+      <!-- Sceneries -->
+
+      <a-asset-item
+        id="Scenery"
+        src="arctic_environment_-_past.glb"
+      ></a-asset-item>
+      <a-gltf-model
+        class="collision"
+        src="#Scenery"
+        gltf-model="arctic_environment_-_past.glb"
+        scale="2 2 2"
+        shadow=""
+        rotation="0 -180 0"
+      ></a-gltf-model>
+
+      <a-asset-item
+        id="Scenery2"
+        src="arctic_environment_-_present.glb"
+      ></a-asset-item>
+      <a-gltf-model
+        class="collision"
+        src="#Scenery2"
+        gltf-model="arctic_environment_-_present.glb"
+        position="0 0 -125"
+        scale="2 2 2"
+        shadow=""
+        rotation="0 -90 0"
+      ></a-gltf-model>
+
+      <a-asset-item
+        id="Scenery3"
+        src="low_poly_arctic_scene (1).glb"
+      ></a-asset-item>
+      <a-gltf-model
+        class="collision"
+        src="#Scenery3"
+        gltf-model="low_poly_arctic_scene (1).glb"
+        position="0 0.63424 -250"
+        scale="30 30 30"
+        shadow=""
+        rotation="0 -180 0"
+      ></a-gltf-model>
+
+      <a-asset-item id="Scenery4" src="old_bridge.glb"></a-asset-item>
+      <a-gltf-model
+        class="collision"
+        src="#Scenery4"
+        gltf-model="old_bridge.glb"
+        position="19.93583 -0.055 -61.73346"
+        scale="3.35 2.47 3.92"
+        shadow=""
+        rotation="0 -90 0"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        class="collision"
+        src="#Scenery4"
+        gltf-model="old_bridge.glb"
+        position="1.02395 0.29158 -192.31832"
+        scale="6.5 2.47 4.42"
+        shadow=""
+        rotation="0 -90 -1.92"
+      ></a-gltf-model>
+
+      <!-- WORLD WATER AROUND -->
+      <a-plane
+        class="not-collision"
+        position="0 -0.2 0"
+        rotation="-90 0 0"
+        width="300"
+        height="300"
+        color="#6bb8e8"
+        roughness="0.25"
+        metalness="0.05"
+        opacity="0.75"
+        transparent="true"
+        scale="5 5 5"
+      ></a-plane>
+
+      <!-- Arctic Environment -->
+      <!-- <a-entity
+        environment="
+          preset: arctic;
+          lighting: sunset;
+          shadow: true;
+          shadowSize: 2048;
+        "
+      ></a-entity> -->
+
+      <!-- Lighting -->
+      <a-light
+        type="directional"
+        color="#FFFFFF"
+        intensity="1.5"
+        position="-5 10 7"
+        shadow="cast: true; mapSize: 2048"
+      ></a-light>
+      <a-light type="ambient" color="#B0E0F0" intensity="0.8"></a-light>
+
+      <!-- Ice Ridge 1 -->
+      <a-box
+        position="-5 -0.56368 -8"
+        width="3"
+        height="2.5"
+        depth="8"
+        color="#B8E8F0"
+        shadow=""
+        class="collision"
+      ></a-box>
+
+      <!-- Distant Mountains (low poly effect) -->
+      <a-cone
+        position="-8 3 -15"
+        radius-bottom="4"
+        radius-top="0.5"
+        height="6"
+        color="#C8E8F0"
+      ></a-cone>
+
+      <a-cone
+        position="21.01123 4.11 -14.57"
+        radius-bottom="3.5"
+        radius-top="0.3"
+        height="5"
+        color="#D0EAF2"
+        scale="1.51 1.76 1.7"
+      ></a-cone>
+
+      <!-- Arctic Sky -->
+      <a-sky color="#87CEEB"></a-sky>
+      <a-plane
+        position="-20 20 -40"
+        rotation="90 0 0"
+        width="25"
+        height="5"
+        color="#ffffff"
+        opacity="0.35"
+        transparent="true"
+      ></a-plane>
+      <a-plane
+        position="10 22 -100"
+        rotation="90 0 0"
+        width="20"
+        height="4"
+        color="#ffffff"
+        opacity="0.3"
+        transparent="true"
+      ></a-plane>
+      <a-plane
+        position="40 18 -180"
+        rotation="90 0 0"
+        width="18"
+        height="3.5"
+        color="#ffffff"
+        opacity="0.32"
+        transparent="true"
+      ></a-plane>
+      <a-plane
+        position="-10 24 -220"
+        rotation="90 0 0"
+        width="22"
+        height="4.5"
+        color="#ffffff"
+        opacity="0.28"
+        transparent="true"
+      ></a-plane>
+      <a-plane
+        position="15 21 -55"
+        rotation="90 0 0"
+        width="16"
+        height="3"
+        color="#ffffff"
+        opacity="0.3"
+        transparent="true"
+      ></a-plane>
+
+      <!-- Polar bears -->
+      <a-assets>
+        <a-asset-item id="polar_bear" src="polar_bear.glb"></a-asset-item>
+        <a-asset-item id="sign" src="sign.glb"></a-asset-item>
+        <audio
+          id="backgroundMusic"
+          src="Background_music.mp3"
+          autoplay
+          loop
+          muted
+        ></audio>
+        <audio id="audio1" src="Audio1.mp3"></audio>
+        <audio id="audio2" src="Audio2.mp3"></audio>
+        <audio id="audio3" src="Audio3.mp3"></audio>
+      </a-assets>
+
+      <a-entity
+        sound="src: #backgroundMusic; autoplay: true; loop: true; volume: 0.5; positional: false"
+      ></a-entity>
+
+      <a-gltf-model
+        src="#polar_bear"
+        gltf-model="polar_bear.glb"
+        position="-4.14448 0.69152 -5.96637"
+        animation-mixer="clip: Animation; timeScale: 0.4"
+        scale="0.5 0.5 0.5"
+        shadow=""
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#sign"
+        position="-1.00952 0.5 15.97917"
+        rotation="0 150 0"
+        gltf-model="sign.glb"
+      ></a-gltf-model>
+
+      <a-entity position="2 1 -5.4" rotation="0 30 0">
+        <a-plane
+          width="1.8"
+          height="0.5"
+          color="#ffffff"
+          opacity="0.9"
+          position="-13.10849 2.44891 16.92554"
+          rotation="-0.29 119.99999999999999 -0.21000000000000002"
+          scale="1.5 3 3"
+        ></a-plane>
+        <a-text
+          value="Press to play"
+          color="#000000"
+          width="1.6"
+          position="-12.48736 2.50492 18.00441"
+          rotation="0 119.99999999999999 0"
+          scale="6 7 7"
+        ></a-text>
+        <a-box
+          position="-13.06 0.61372 16.89892"
+          width="1.2"
+          height="0.3"
+          depth="0.1"
+          color="#3377ff"
+          class="clickable"
+          sound="on: click; positional: false; src: Audio1.mp3"
+          rotation="0 119.99999999999999 0"
+          scale="1 1.71 1"
+        ></a-box>
+      </a-entity>
+
+      <a-gltf-model
+        src="#sign"
+        position="-5.25427 0.5 -120.27533"
+        rotation="0 108.31 0"
+        gltf-model="sign.glb"
+      ></a-gltf-model>
+
+      <a-entity position="-5.25427 1.5 -120.27533" rotation="0 108.31 0">
+        <a-plane
+          width="1.8"
+          height="0.5"
+          color="#ffffff"
+          opacity="0.9"
+          position="-0.08902 1.94719 0.26903"
+          scale="1.39 2.07 1"
+        ></a-plane>
+        <a-text
+          value="Press to play"
+          color="#000000"
+          width="1.6"
+          position="-1.07759 1.97737 0.32734"
+          scale="5 5 5"
+        ></a-text>
+        <a-box
+          position="-0.0018 0.01708 0.21351"
+          width="1.2"
+          height="0.3"
+          depth="0.1"
+          color="#3377ff"
+          class="clickable"
+          sound="distanceModel: linear; maxDistance: 15; on: click; src: Audio2.mp3"
+        ></a-box>
+      </a-entity>
+
+      <<a-gltf-model
+        src="#polar_bear"
+        gltf-model="polar_bear.glb"
+        position="7.82096 2.75826 22.93871"
+        animation-mixer="clip: Animation; timeScale: 0.4"
+        scale="0.3 0.3 0.3"
+        shadow=""
+        rotation="-0.8602 -73.22562 20.219940000000005"
+      ></a-gltf-model>
+
+      <a-asset-item
+        id="bear_attack"
+        src="the-disappearing-polar-bear.glb"
+      ></a-asset-item>
+      <a-gltf-model
+        src="#bear_attack"
+        gltf-model="the-disappearing-polar-bear.glb"
+        position="5.63565 3.46075 -27.50762"
+        animation-mixer="clip: Attack2; timeScale: 0.4"
+        scale="1.5 1.5 1.5"
+        rotation="-15.58353 80.30648 31.039060000000003"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#bear_attack"
+        gltf-model="the-disappearing-polar-bear.glb"
+        position="-29.51189 0.277 -6.76726"
+        animation-mixer="clip: Attack3; timeScale: 0.9"
+        scale="1.5 1.5 1.5"
+        rotation="20.1555093171121 206.5748 12.33993"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#bear_attack"
+        gltf-model="the-disappearing-polar-bear.glb"
+        position="-10.33356 -0.06097 5.23497"
+        animation="dur: 40000; easing: linear; loop: true; property: position; to: 30 1 -40"
+        animation-mixer="clip: Run; timeScale: 0.7"
+        scale="1.5 1.5 1.5"
+        rotation="-0.2297560758474601 61.831886377133046 0"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#bear_attack"
+        gltf-model="the-disappearing-polar-bear.glb"
+        position="-20.95641 0.02472 15.24858"
+        animation="dur: 40000; easing: linear; loop: true; property: position; to: 45 0 -45"
+        animation-mixer="clip: Run; timeScale: 0.7"
+        scale="1.5 1.5 1.5"
+        rotation="-0.2297560758474601 23.583515805379815 0"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#bear_attack"
+        gltf-model="the-disappearing-polar-bear.glb"
+        position="-0.27099 2.42408 -277.65541"
+        animation-mixer="clip: Die; timeScale: 0.1"
+        scale="1.5 1.5 1.5"
+        rotation="38.29024 32.26352000000001 0"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#bear_attack"
+        gltf-model="the-disappearing-polar-bear.glb"
+        position="14.52551 1.14359 -277.65541"
+        animation-mixer="clip: Die; timeScale: 0.1"
+        scale="1.5 1.5 1.5"
+        rotation="38.29024 32.26352000000001 0"
+      ></a-gltf-model>
+
+      <!--ANIMALS-->
+
+      <a-asset-item id="OWL" src="day_20_-_snowy_owl.glb"></a-asset-item>
+      <a-gltf-model
+        src="#OWL"
+        gltf-model="day_20_-_snowy_owl.glb"
+        position="-132.31527 17.43349 -14.97586"
+        animation-mixer="clip: ArmatureAction; timeScale: 0.7"
+        animation="dur: 10000; easing: linear; loop: true; property: position; to: 200.31527 17.43349 14.97586"
+        animation__look="property: rotation; to: -17.27353160760406 92.86648055355758 36.25906160705901; dur: 4000; easing: easeInOutSine; loop: true; dir: alternate"
+        scale="2 2 2"
+        rotation="-17.27353160760406 72.86648055355758 36.25906160705901"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#OWL"
+        gltf-model="day_20_-_snowy_owl.glb"
+        position="-200.06803 25.43349 -20.83401"
+        animation-mixer="clip: ArmatureAction; timeScale: 0.7"
+        animation="dur: 15000; easing: linear; loop: true; property: position; to: 80.31527 17.43349 14.97586"
+        animation__look="dir: alternate; dur: 4000; easing: easeInOutSine; loop: true; property: rotation; to: -30.27353160760406 92.86648055355758 36.25906160705901"
+        scale="2 2 2"
+        rotation="-17.27353160760406 88.5343418288111 36.25906160705901"
+      ></a-gltf-model>
+
+      <a-asset-item id="FOX" src="arctic_fox.glb"></a-asset-item>
+      <a-gltf-model
+        src="#FOX"
+        gltf-model="arctic_fox.glb"
+        position="39.2726 9.71628 -19.8867"
+      ></a-gltf-model>
+      <a-gltf-model
+        src="#FOX2"
+        gltf-model="arctic_fox.glb"
+        position="39.15197 9.8851 -22.47367"
+        scale="1.6 1.6 1.6"
+        rotation="-2.29 -41.91 -1.64"
+      ></a-gltf-model>
+
+      <a-asset-item
+        id="fox_snowman"
+        src="arctic_fox_-_3december.glb"
+      ></a-asset-item>
+      <a-gltf-model
+        src="#fox_snowman"
+        gltf-model="arctic_fox_-_3december.glb"
+        position="28.21031 1.75943 -19.32049"
+        scale="0.04 0.04 0.04"
+        rotation="9.92 -43.78 5.93"
+      ></a-gltf-model>
+
+      <a-asset-item id="skullbear" src="polar_bear_skull.glb"></a-asset-item>
+      <a-gltf-model
+        src="#skullbear"
+        gltf-model="polar_bear_skull.glb"
+        position="6.2721 2.80974 -240.25649"
+        scale="0.005 0.005 0.005"
+        rotation="9.92 -43.78 5.93"
+      ></a-gltf-model>
+
+      <a-asset-item id="polarbeary" src="polar.glb"></a-asset-item>
+      <a-gltf-model
+        src="#polarbeary"
+        gltf-model="polar.glb"
+        position="-10.19843 10.46896 37.32447"
+        scale="0.01 0.01 0.01"
+        rotation="14.34024 180 4.47"
+        animation-mixer="clip: Urso_RIG|Urso_RIGAction; timeScale: 0.7"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#polarbeary"
+        gltf-model="polar.glb"
+        position="-23.54065 -0.18993 -24.41036"
+        scale="0.01 0.01 0.01"
+        rotation="-1.70976 180 -3.87"
+        animation-mixer="clip: Urso_RIG|Urso_RIGAction; timeScale: 0.7"
+      ></a-gltf-model>
+
+      <a-asset-item
+        id="penguinafrican"
+        src="african_penguin_spheniscus_demersus_low_poly.glb"
+      ></a-asset-item>
+      <a-gltf-model
+        src="#penguinafrican"
+        gltf-model="african_penguin_spheniscus_demersus_low_poly.glb"
+        position="-25.69485 3.573 -45.61479"
+        scale="7 7 7"
+        rotation="-42.33 -63.69 -16.26"
+        animation-mixer="clip: Preen; timeScale: 0.7"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#penguinafrican"
+        gltf-model="african_penguin_spheniscus_demersus_low_poly.glb"
+        position="-38.19576 3.573 -117.45219"
+        scale="7 7 7"
+        animation-mixer="clip: Preen; timeScale: 0.7"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#penguinafrican"
+        gltf-model="african_penguin_spheniscus_demersus_low_poly.glb"
+        position="29.75779 2.13452 -141.70559"
+        scale="7 7 7"
+        animation-mixer="clip: Sleep; timeScale: 0.7"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#penguinafrican"
+        gltf-model="african_penguin_spheniscus_demersus_low_poly.glb"
+        position="30.57836 1.75123 -143.76513"
+        scale="5 5 5"
+        animation-mixer="clip: Sleep; timeScale: 0.7"
+        rotation="0 -170 0"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#penguinafrican"
+        gltf-model="african_penguin_spheniscus_demersus_low_poly.glb"
+        position="28.58055 1.53673 -141.70559"
+        scale="5 5 5"
+        animation-mixer="clip: Sleep; timeScale: 0.7"
+        rotation="0 43.01 0.19"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#penguinafrican"
+        gltf-model="african_penguin_spheniscus_demersus_low_poly.glb"
+        position="2.30279 1.5 -195.06118"
+        scale="5 5 5"
+        animation-mixer="clip: Walk; timeScale: 0.7"
+        animation="dur: 80000; easing: linear; loop: true; property: position; to: 0 2.0468 0"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#penguinafrican"
+        gltf-model="african_penguin_spheniscus_demersus_low_poly.glb"
+        position="2.30279 1.5 -195.06118"
+        scale="5 5 5"
+        animation-mixer="clip: Walk; timeScale: 0.7"
+        animation="dur: 80000; easing: linear; loop: true; property: position; to: 0 2.0468 0"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#penguinafrican"
+        gltf-model="african_penguin_spheniscus_demersus_low_poly.glb"
+        position="2.30279 1.5 -195.06118"
+        scale="5 5 5"
+        animation-mixer="clip: Walk; timeScale: 0.7"
+        animation="dur: 110000; easing: linear; loop: true; property: position; to: 0 2.0468 0"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#penguinafrican"
+        gltf-model="african_penguin_spheniscus_demersus_low_poly.glb"
+        position="2.30279 1.5 -195.06118"
+        scale="5 5 5"
+        animation-mixer="clip: Walk; timeScale: 0.7"
+        animation="dur: 70000; easing: linear; loop: true; property: position; to: 0 2.0468 0"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#penguinafrican"
+        gltf-model="african_penguin_spheniscus_demersus_low_poly.glb"
+        position="2.30279 1.5 -195.06118"
+        scale="5 5 5"
+        animation-mixer="clip: Walk; timeScale: 0.7"
+        animation="dur: 100000; easing: linear; loop: true; property: position; to: 0 2.0468 0"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#penguinafrican"
+        gltf-model="african_penguin_spheniscus_demersus_low_poly.glb"
+        position="2.30279 1.5 -195.06118"
+        scale="5 5 5"
+        animation-mixer="clip: Walk; timeScale: 0.7"
+        animation="dur: 90000; easing: linear; loop: true; property: position; to: 0 2.0468 0"
+      ></a-gltf-model>
+
+      <a-asset-item id="penguin1" src="penguin_swimming.glb"></a-asset-item>
+      <a-gltf-model
+        src="#penguin1"
+        gltf-model="penguin_swimming.glb"
+        position="-23.54635 -0.78839 0.11426"
+        animation="dur: 40000; easing: linear; loop: true; property: position; to: 20 -2 -30"
+        animation-mixer="clip: Swim; timeScale: 0.7"
+        scale="0.2 0.2 0.2"
+        rotation="-0.2297560758474601 61.831886377133046 0"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#penguin1"
+        gltf-model="penguin_swimming.glb"
+        position="-23.64943 -0.74231 -0.07938"
+        animation="dur: 30000; easing: linear; loop: true; property: position; to: 25 -2 -35"
+        animation-mixer="clip: Swim; timeScale: 0.7"
+        scale="0.2 0.2 0.2"
+        rotation="-0.2297560758474601 61.831886377133046 0"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#penguin1"
+        gltf-model="penguin_swimming.glb"
+        position="-18.74269 -0.85933 -1.36707"
+        animation="dur: 40000; easing: linear; loop: true; property: position; to: -60.74269 -0.85933 -1.36707"
+        animation-mixer="clip: Swim; timeScale: 0.7"
+        scale="0.2 0.2 0.2"
+        rotation="-7.9795832127869755 176.88052 0"
+      ></a-gltf-model>
+
+      <a-gltf-model
+        src="#sign"
+        position="6.86296 0.46618 -255.08757"
+        rotation="0 13.023903641118743 0"
+        gltf-model="sign.glb"
+      ></a-gltf-model>
+
+      <a-entity
+        position="6.86296 1.46618 -255.08757"
+        rotation="0 13.023903641118743 0"
+      >
+        <a-plane
+          width="1.8"
+          height="0.5"
+          color="#ffffff"
+          opacity="0.9"
+          position="-0.05513 1.90883 0.23835"
+          scale="1.73 1.97 1.67"
+        ></a-plane>
+        <a-text
+          value="Press to play"
+          color="#000000"
+          width="1.6"
+          position="-1.00603 1.93622 0.39083"
+          scale="5 5 5"
+        ></a-text>
+        <a-box
+          position="0.00214 0.64015 0.20262"
+          width="1.2"
+          height="0.3"
+          depth="0.1"
+          color="#3377ff"
+          class="clickable"
+          sound="distanceModel: linear; maxDistance: 20; on: click; src: Audio3.mp3"
+        ></a-box>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
